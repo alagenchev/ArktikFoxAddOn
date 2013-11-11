@@ -28,10 +28,7 @@ function isUnsafeUrl(url)
         this.url = url;
     }
 
-    /*
-console.log("document.URL: " + JSON.stringify(document.URL) + "top location " + 
-    JSON.stringify(top.location.href, null, 4));
-    */
+//console.log("document.URL: " + JSON.stringify(document.URL));
 var isUnsafePage = false;
 var isUnsafeIframe = false;
 

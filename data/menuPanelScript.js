@@ -6,10 +6,15 @@ var ResultEnum =
     }
 
 
-self.port.on("passwordDecisionMade", function(decision) {
+self.port.on("passwordDecisionMade", function(decision, warningPanel) {
+    if(warningPanel.isShowing)
+    {
+        return;
+    }
     var menuWarningArea = document.getElementById('warningDiv');
-    //console.log("decision in menu: " + JSON.stringify(decision, null, 4));
-    
+    /*
+    console.log("decision in menu: " + JSON.stringify(decision, null, 4));
+    */
     if(!decision)
     {
         menuWarningArea.innerHTML = "No insecure passwords were found on this page.";
