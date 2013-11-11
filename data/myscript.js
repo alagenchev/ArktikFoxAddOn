@@ -28,11 +28,25 @@ function isUnsafeUrl(url)
         this.url = url;
     }
 
+    /*
+console.log("document.URL: " + JSON.stringify(document.URL) + "top location " + 
+    JSON.stringify(top.location.href, null, 4));
+    */
 var isUnsafePage = false;
+var isUnsafeIframe = false;
+
 if(isUnsafeUrl(document.URL))
 {
     isUnsafePage = true;
 }
+
+/*
+if(isUnsafePage && JSON.stringify(top.location.href) != JSON.stringify(document.URL))
+{
+    console.log("unsafe iframe");
+    isUnsafeIframe = true;
+}*/
+
 var result;
 var isUnsafePassword = false;
 
@@ -44,7 +58,7 @@ for(var i = 0; i < document.forms.length; i++)
         isUnsafeForm = true;
     }
     
-    if(!isUnsafeForm && !isUnsafePage)
+    if(!isUnsafeForm && !isUnsafePage && !isUnsafeIframe)
     {
         continue;
     }
@@ -52,6 +66,15 @@ for(var i = 0; i < document.forms.length; i++)
 
     for(var j = 0; j < elements.length; j++)
     {
+
+        /*
+        if(elements[j].type == "password" && isUnsafeIframe)
+        {
+            result = new DecisionResult(ResultEnum.IFRAME, document.URL); 
+            self.port.emit("getInsecurePasswordDecision", result);
+            isUnsafePassword = true;
+        }
+    */
         if(elements[j].type == "password" && isUnsafePage )
         {
             result = new DecisionResult(ResultEnum.PAGE, document.URL); 
@@ -60,7 +83,7 @@ for(var i = 0; i < document.forms.length; i++)
         }
         else if(elements[j].type == "password" &&  isUnsafeForm)
         {
-            result = new DecisionResult(ResultEnum.FORM, document.URL); 
+            result = new DecisionResult(ResultEnum.FORM, document.forms[i].action); 
             self.port.emit("getInsecurePasswordDecision", result);
             isUnsafePassword = true;
         }
