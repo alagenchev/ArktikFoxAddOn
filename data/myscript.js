@@ -22,11 +22,11 @@ function isUnsafeUrl(url)
     return false;
 }
 
-    function DecisionResult(type, url) 
-    {
-        this.type = type;
-        this.url = url;
-    }
+function DecisionResult(type, url)
+{
+    this.type = type;
+    this.url = url;
+}
 
 //console.log("document.URL: " + JSON.stringify(document.URL));
 var isUnsafePage = false;
@@ -36,13 +36,6 @@ if(isUnsafeUrl(document.URL))
 {
     isUnsafePage = true;
 }
-
-/*
-if(isUnsafePage && JSON.stringify(top.location.href) != JSON.stringify(document.URL))
-{
-    console.log("unsafe iframe");
-    isUnsafeIframe = true;
-}*/
 
 var result;
 var isUnsafePassword = false;
@@ -86,10 +79,3 @@ for(var i = 0; i < document.forms.length; i++)
         }
     }
 }
-
-if(!isUnsafePassword)
-{
-    self.port.emit("getInsecurePasswordDecision", null);
-}
-
-

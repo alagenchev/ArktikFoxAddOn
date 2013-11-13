@@ -5,21 +5,17 @@ var ResultEnum =
         "IFRAME" : 2
     }
 
+    self.port.on("clearWarning", function() {
+        var menuWarningArea = document.getElementById('warningDiv');
+        menuWarningArea.innerHTML = "No insecure passwords were found on this page.";
+    });
 
 self.port.on("passwordDecisionMade", function(decision, warningPanel) {
-    if(warningPanel.isShowing)
-    {
-        return;
-    }
     var menuWarningArea = document.getElementById('warningDiv');
     /*
+    console.log("warning panel: " + warningPanel.isShowing);
     console.log("decision in menu: " + JSON.stringify(decision, null, 4));
     */
-    if(!decision)
-    {
-        menuWarningArea.innerHTML = "No insecure passwords were found on this page.";
-        return;
-    }
 
     if(decision.type == ResultEnum.PAGE)
     {
@@ -34,7 +30,4 @@ self.port.on("passwordDecisionMade", function(decision, warningPanel) {
         menuWarningArea.innerHTML = "Insecure passwords were found on this iframe!";
     }
     menuWarningArea.innerHTML = menuWarningArea.innerHTML + " " + decision.url; 
-
-    console.log("done");
-
 });
