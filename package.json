@@ -1,9 +1,10 @@
 {
-  "name": "arktikfoxaddon",
-  "fullName": "ArktikFoxAddOn",
+  "name": "insecpwd",
+  "fullName": "Insecure Password Input Detector",
   "id": "jid1-FjtvRdbteN6b3Q",
-  "description": "a basic add-on",
-  "author": "",
+  "description": "The extension detects password input fields, which would transmit your passwords over insecure means.",
+  "author": "Ivan Alagenchev",
   "license": "MPL 2.0",
-  "version": "0.1"
+  "version": "0.1",
+  "homepage": "http://www.alagenchev.com"
 }
