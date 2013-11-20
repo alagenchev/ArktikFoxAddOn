@@ -13,3 +13,7 @@
 *.a
 
 *.swp
+*.class
+*.log
+WebService/ArktikFoxWebServices/target/classes/*
+*.xpi
