@@ -1,10 +1,3 @@
-var ResultEnum = 
-    {
-        "PAGE" : 0,
-        "FORM" : 1,
-        "IFRAME" : 2
-    }
-
     self.port.on("clearWarning", function() {
         var menuWarningArea = document.getElementById('warningDiv');
         menuWarningArea.innerHTML = "No insecure passwords were found on this page.";
@@ -17,15 +10,15 @@ self.port.on("passwordDecisionMade", function(decision, warningPanel) {
     console.log("decision in menu: " + JSON.stringify(decision, null, 4));
     */
 
-    if(decision.type == ResultEnum.PAGE)
+    if(decision.type == "page")
     {
         menuWarningArea.innerHTML = "Insecure passwords were found on this page!";
     }
-    else if(decision.type == ResultEnum.FORM)
+    else if(decision.type == "form")
     {
         menuWarningArea.innerHTML = "Insecure passwords were found on this form!";
     }
-    else if(decision.type == ResultEnum.IFRAME)
+    else if(decision.type == "iframe")
     {
         menuWarningArea.innerHTML = "Insecure passwords were found on this iframe!";
     }
