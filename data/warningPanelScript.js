@@ -1,15 +1,15 @@
+// the user clicked somewhere in the panel document
 window.addEventListener('click', function(event) {
     var t = event.target;
     if (t.nodeName == 'BUTTON')
-        self.port.emit('click-link');
+        // send notification to main.js that the user
+        // clicked on the learn more button
+        self.port.emit('clicked-learn-more-link');
 }, false);
 
+// we received a passward decision from the browser
 self.port.on("passwordDecisionMade", function(decision) {
     var warningArea = document.getElementById('warningDiv');
-    /*
-    console.log("warning panel: " + warningPanel.isShowing);
-    console.log("decision in menu: " + JSON.stringify(decision, null, 4));
-    */
 
     if(decision.type == "page")
     {
@@ -23,6 +23,6 @@ self.port.on("passwordDecisionMade", function(decision) {
     {
         warningArea.innerHTML = "Insecure passwords were found on an iframe with source: ";
     }
-    warningArea.innerHTML = warningArea.innerHTML + decision.url + 
-        "   <button style=\"margin-left: 20\">Learn More</button>"; 
+    warningArea.innerHTML = warningArea.innerHTML + decision.url +
+        "   <button style=\"margin-left: 20\">Learn More</button>";
 });
