@@ -1,10 +1,27 @@
 {
-  "name": "insecpwd",
-  "fullName": "Insecure Password Input Detector",
-  "id": "jid1-FjtvRdbteN6b3Q",
-  "description": "The extension detects password input fields, which would transmit your passwords over insecure means.",
-  "author": "Ivan Alagenchev",
-  "license": "MPL 2.0",
-  "version": "0.1",
-  "homepage": "http://www.alagenchev.com"
-}
+    "name": "insecpwd",
+    "fullName": "Insecure Password Input Detector",
+    "id": "jid1-FjtvRdbteN6b3Q",
+    "description": "The extension detects password input fields, which would transmit your passwords over insecure means.",
+    "author": "Ivan Alagenchev",
+    "license": "MPL 2.0",
+    "version": "0.1",
+    "homepage": "http://www.alagenchev.com",
+    "preferences": [{
+            "name": "sendOffenders",
+            "title": "Report Insecure Websites",
+            "description": "By reporting instances of insecure password fields, you will enable us ot contact the owners of the offending websites and help us make the web a better place. We transmit only the addresses of the offending websites and do not track any personal, or identifying information.",
+            "type": "radio",
+            "value": "Y",
+            "options": [
+                {
+                    "value": "Y",
+                    "label": "Yes, send website addresses to help improve the web."
+                },
+            {
+                "value": "N",
+                "label": "No, I just want to be notified. Do not send any information to your servers."
+            }
+    ]
+    }]
+    }
