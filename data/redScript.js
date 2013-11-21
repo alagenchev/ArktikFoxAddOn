@@ -13,7 +13,6 @@ self.port.on("insecure-password", function (decision)
             if(elements[j].type == "password")
             {
                 elements[j].setAttribute("style", "background-color: rgba(239, 48, 36, .3);");
-                console.error("got a form that contains an insecure pass");
             }
         }
     }
