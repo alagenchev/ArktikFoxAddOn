@@ -12,7 +12,7 @@
             "title": "Report Insecure Websites",
             "description": "By reporting instances of insecure password fields, you will enable us ot contact the owners of the offending websites and help us make the web a better place. We transmit only the addresses of the offending websites and do not track any personal, or identifying information.",
             "type": "radio",
-            "value": "Y",
+            "value": "N",
             "options": [
                 {
                     "value": "Y",
